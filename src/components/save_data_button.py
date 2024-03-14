@@ -1,3 +1,4 @@
+from pathlib import Path
 from dash import Dash, Input, Output, State, dcc
 import dash_bootstrap_components as dbc
 import pandas as pd
@@ -37,7 +38,8 @@ def render(app: Dash) -> dbc.Button:
                 'Observações': observations,
             },
         )
-        return dcc.send_data_frame(df.to_csv, f"{name}_{age}.csv", index=False)
+        file_path: Path = Path.cwd() / 'src' / 'data' / f'{name}_{age}.csv'
+        return dcc.send_data_frame(df.to_csv, file_path, index=False)
     return dbc.Button(
         'Salvar',
         id=ids.SAVE_BUTTON,
