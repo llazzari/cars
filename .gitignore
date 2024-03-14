@@ -1,3 +1,6 @@
 __pycache__
 render.yaml
 *.csv
+pyproject.toml
+.venv
+poetry.lock
