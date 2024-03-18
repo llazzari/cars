@@ -1,49 +1,43 @@
-from pathlib import Path
-from dash import Dash, Input, Output, State, dcc
-import dash_bootstrap_components as dbc
-import pandas as pd
+from dash import Dash, Input, Output, State
+import dash_mantine_components as dmc
 
+from data import cars
 from components import ids
 
 
-def render(app: Dash) -> dbc.Button:
+def render(app: Dash) -> dmc.Button:
     @app.callback(
-        Output(ids.DOWNLOAD_DATA, 'data'),
+        Output(ids.ALERT_SAVE, 'hide'),
+        Output(ids.ALERT_SAVE, 'children'),
+        Output(ids.ALERT_SAVE, 'title'),
         Input(ids.SAVE_BUTTON, 'n_clicks'),
         [
             State(ids.NAME, 'value'),
-            State(ids.AGE, 'value'),
             State(ids.BIRTHDATE, 'value'),
             State(ids.DATE, 'value'),
             State(ids.STORE_RADIO_ITEMS, 'data'),
             State(ids.OBS_STORE, 'data'),
         ],
-        prevent_initial_call=True
+        prevent_initial_call=True,
     )
     def on_click(
         _,
         name: str,
-        age: str,
         birthdate: str,
         date: str,
         scores: list[float],
-        observations: list[str],
-    ):
-        df = pd.DataFrame(
-            {
-                'Nome': name,
-                'Data de nascimento': birthdate,
-                'Data de avaliação': date,
-                'Score': scores,
-                'Observações': observations,
-            },
-        )
-        file_path: Path = Path.cwd() / 'src' / 'data' / f'{name}_{age}.csv'
-        return dcc.send_data_frame(df.to_csv, file_path, index=False)
-    return dbc.Button(
+        observations: list[str]
+    ) -> tuple[bool, str, str]:
+        if not name:
+            return False, 'Preencha o nome.', 'Erro'
+
+        patient_data: dict[str, str] = {'name': name, 'birthdate': birthdate}
+        cars.insert_scores(patient_data, date, scores, observations)
+
+        return False, 'Os dados foram salvos com sucesso!', 'Sucesso'
+    return dmc.Button(
         'Salvar',
         id=ids.SAVE_BUTTON,
-        class_name='me-1',
-        style={'margin-right': '10px'},
-        color='info'
+        radius='xl',
+        variant='gradient',
     )

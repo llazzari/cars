@@ -20,10 +20,12 @@ AGE = 'age'
 
 SAVE_BUTTON = 'save-button'
 DOWNLOAD_DATA = 'download-data'
-UPLOAD_BUTTON = 'upload-button'
+SELECT_PATIENT = 'select-patient'
 UPLOAD_DATA = 'upload-data'
 
 PAGINATION = 'pagination'
 CARD = 'card'
 STORE_RADIO_ITEMS = 'store-radio-items'
 RADIO_ITEMS = 'radio-items'
+
+ALERT_SAVE = 'alert-save'

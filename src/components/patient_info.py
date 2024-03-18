@@ -61,17 +61,17 @@ def render() -> dmc.Card:
                     ),
                     span='auto',
                 ),
-                dmc.Col(
-                    dmc.TextInput(
-                        label='Idade',
-                        radius='xl',
-                        required=True,
-                        placeholder='Idade do paciente',
-                        id=ids.AGE,
-                        type='number',
-                    ),
-                    span='auto',
-                ),
+                # dmc.Col(
+                #     dmc.TextInput(
+                #         label='Idade',
+                #         radius='xl',
+                #         required=True,
+                #         placeholder='Idade do paciente',
+                #         id=ids.AGE,
+                #         type='number',
+                #     ),
+                #     span='auto',
+                # ),
             ],
             grow=True,
             gutter='xl',

@@ -2,11 +2,12 @@ from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 
 from components import (
-    pacient_info,
     ids,
     tabs,
-    upload_data_button,
-    save_data_button
+    save_data_button,
+    alert_save,
+    load_data_button,
+    patient_info
 )
 
 
@@ -16,13 +17,15 @@ def render(app: Dash) -> dbc.Container:
             dcc.Download(id=ids.DOWNLOAD_DATA),
             html.H1(app.title),
             html.Hr(),
-            pacient_info.render(),
+            patient_info.render(),
+            alert_save.render(),
             dbc.Row(
                 [
-                    dbc.Col(upload_data_button.render(app), width='auto'),
+                    dbc.Col(load_data_button.render(app), width='auto'),
                     dbc.Col(save_data_button.render(app), width='auto')
                 ],
-                justify='end'
+                justify='end',
+                style={'margin-bottom': '10px'},
             ),
             tabs.render(app),
         ],
