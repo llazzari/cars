@@ -19,7 +19,7 @@ Run the following command:
 
 Bash
 
-python app.py
+python src/app.py
 
 This will launch the web app in your default browser, typically at http://127.0.0.1:8050/.
 
@@ -38,3 +38,5 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 Contributing
 We welcome contributions to improve this web app! If you have suggestions or bug fixes, feel free to fork the repository and submit a pull request.
+
+![](https://github.com/llazzari/cars/blob/main/cars.gif)
