@@ -33,3 +33,10 @@
     color: var(--bs-info) !important;
     border-color: var(--bs-info) !important;
 }
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    color: var(--bs-nav-tabs-link-active-color);
+    background-color: var(--bs-info);
+    border-color: var(--bs-nav-tabs-link-active-border-color);
+}
