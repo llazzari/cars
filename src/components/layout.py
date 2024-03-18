@@ -28,6 +28,5 @@ def render(app: Dash) -> dbc.Container:
             ),
             tabs.render(app),
         ],
-        # style={'margin': '10px'},
         className="dbc"
     )
