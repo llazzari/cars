@@ -4,3 +4,4 @@ render.yaml
 pyproject.toml
 .venv
 poetry.lock
+patients.db
