@@ -25,7 +25,6 @@ def render(app: Dash) -> dbc.Container:
                     dbc.Col(save_data_button.render(app), width='auto')
                 ],
                 justify='end',
-                style={'margin-bottom': '10px'},
             ),
             tabs.render(app),
         ],

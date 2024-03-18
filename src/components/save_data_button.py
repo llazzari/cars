@@ -9,7 +9,7 @@ def render(app: Dash) -> dmc.Button:
     @app.callback(
         Output(ids.ALERT_SAVE, 'hide'),
         Output(ids.ALERT_SAVE, 'children'),
-        Output(ids.ALERT_SAVE, 'title'),
+        # Output(ids.ALERT_SAVE, 'title'),
         Input(ids.SAVE_BUTTON, 'n_clicks'),
         [
             State(ids.NAME, 'value'),
@@ -27,17 +27,18 @@ def render(app: Dash) -> dmc.Button:
         date: str,
         scores: list[float],
         observations: list[str]
-    ) -> tuple[bool, str, str]:
+    ) -> tuple[bool, str]:  # , str]:
         if not name:
-            return False, 'Preencha o nome.', 'Erro'
+            return False, 'Preencha o nome.'  # , 'Erro'
 
         patient_data: dict[str, str] = {'name': name, 'birthdate': birthdate}
         cars.insert_scores(patient_data, date, scores, observations)
 
-        return False, 'Os dados foram salvos com sucesso!', 'Sucesso'
+        return False, 'Os dados foram salvos com sucesso!'  # , 'Sucesso'
     return dmc.Button(
         'Salvar',
         id=ids.SAVE_BUTTON,
         radius='xl',
-        variant='gradient',
+        variant='outline',
+        className='load-and-save',
     )

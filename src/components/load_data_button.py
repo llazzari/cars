@@ -23,7 +23,10 @@ def render(app: Dash) -> html.Div:
         prevent_initial_call=True,
     )
     def upload(patient_name: str) -> Entries:
-        birthdate: str = get_patient_birthdate(patient_name)
+        try:
+            birthdate: str = get_patient_birthdate(patient_name)
+        except TypeError:
+            birthdate: str = str(datetime.date.today())
         patient_data: dict[str, str] = {
             'name': patient_name,
             'birthdate': birthdate
@@ -45,10 +48,12 @@ def render(app: Dash) -> html.Div:
             id=ids.SELECT_PATIENT,
             searchable=True,
             nothingFound='Nenhum paciente encontrado.',
-            icon=DashIconify(icon="radix-icons:magnifying-glass"),
+            icon=DashIconify(
+                icon="radix-icons:magnifying-glass",
+                color='var(--bs-info)'
+            ),
             rightSection=DashIconify(icon="radix-icons:chevron-down"),
             clearable=True,
             className='load-and-save',
         ),
-        # style={'margin-top': '10px'}
     )

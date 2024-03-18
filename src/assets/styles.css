@@ -1,0 +1,35 @@
+.load-and-save {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--bs-info) !important;
+    border-color: var(--bs-info) !important;
+}
+
+.load-and-save:hover {
+    background-color: var(--bs-light) !important;
+}
+
+.mantine-69lf94:hover,
+.mantine-69lf94:focus,
+.mantine-69lf94:focus-within {
+    outline: none;
+    border-color: var(--bs-info) !important;
+}
+
+.alert {
+    margin-bottom: 10px;
+    margin-right: 0;
+    margin-left: auto;
+    width: fit-content;
+    font-weight: bold;
+    background-color: var(--bs-secondary) !important;
+}
+
+.mantine-twh6oi {
+    color: var(--bs-info) !important;
+    border-color: var(--bs-info) !important;
+}
