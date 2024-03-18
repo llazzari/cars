@@ -17,9 +17,6 @@ app = Dash(
 )
 app.title = 'Childhood Autism Rating Scale (CARS)'
 create_tables()
-insert_patient({'name': 'João', 'birthdate': '01/01/2020'})
-insert_patient({'name': 'Maria', 'birthdate': '02/02/2020'})
-insert_patient({'name': 'Josefina', 'birthdate': '03/03/2020'})
 app.layout = layout.render(app)
 app.scripts.config.serve_locally = True
 server = app.server
